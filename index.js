@@ -144,7 +144,7 @@ app.post("/users", async (req, res) => {
 //For posting NEW plants
 app.post("/plants", async (req, res) => {
   try {
-    const { name, care_needs, instructions, author_id, category_id } = req.body;
+    const { name, care_needs, instructions, author_id, category_id, image_url } = req.body;
 
     if (!name || !care_needs || !instructions || !author_id || !category_id) {
       return res.status(400).json({
@@ -153,7 +153,7 @@ app.post("/plants", async (req, res) => {
     }
 
     const result = await pool.query(
-      `INSERT INTO plants (name, care_needs, instructions, author_id, category_id)
+      `INSERT INTO plants (name, care_needs, instructions, author_id, category_id, image_url)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING *`,
       [name, care_needs, instructions, author_id, category_id]
@@ -173,7 +173,7 @@ app.post("/plants", async (req, res) => {
 app.get("/plants", async (req, res) => {
   try {
     const result = await pool.query(`
-      SELECT plants.id, plants.name, plants.care_needs, plants.instructions,
+      SELECT plants.id, plants.name, plants.care_needs, plants.instructions, plants.image_url,
              users.username AS author, categories.name AS category
       FROM plants
       JOIN users ON plants.author_id = users.id
@@ -192,7 +192,7 @@ app.get("/plants/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const result = await pool.query(
-      `SELECT plants.id, plants.name, plants.care_needs, plants.instructions,
+      `SELECT plants.id, plants.name, plants.care_needs, plants.instructions, plants.image_url,
               users.username AS author, categories.name AS category
        FROM plants
        JOIN users ON plants.author_id = users.id
