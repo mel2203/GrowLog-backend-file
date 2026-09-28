@@ -13,7 +13,6 @@ app.use(express.json());
 require('dotenv').config();
 //so that we can use our .env that holds our database
 
-console.log('DATABASE_URL loaded?', !!process.env.DATABASE_URL);
 
 const cors = require('cors');
 //Cross-Origin Resource Sharing, to prevent blocked CORS policy
@@ -56,6 +55,7 @@ app.get("/users", async (req, res) => {
   }
 });
 
+//fetch users by their id number
 app.get("/users/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -91,6 +91,7 @@ app.get("/categories", async (req, res) => {
   }
 });
 
+//fetch category by their id number
 app.get("/categories/:id", async (req, res) => {
   try {
     const { id } = req.params;
