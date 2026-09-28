@@ -8,7 +8,6 @@
 ## 🔗 Links
  
 | | |
-|---|---|
 | 🌍 Live site | https://growlog-xi.vercel.app/ |
 | ⚙️ Live API | growlog-backend-file-production.up.railway.app
 | 🖥️ Backend repo | https://github.com/mel2203/GrowLog-backend-file.git |
