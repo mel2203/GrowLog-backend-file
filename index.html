@@ -1,1 +1,65 @@
-Express starter
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GrowLog API</title>
+</head>
+
+
+<body>
+<h1>Welcome to GrowLog API!</h1>
+<p>GrowLog is a plant care API that holds database on how to care for your plants, created by Lyana </p>
+
+<h2>How to use paths?</h2>
+
+<h2> PLANTS </h2>
+
+<h3>GET /plants</h3>
+<p>Add /plants at the end of your url to retrieve all plants in the database and their info</p>
+
+<h3>GET /plants/:id</h3>
+<p>Returns one plant that matches id, 400 if id is not a number and 404 if id not found</p>
+
+<h3>POST /plants</h3>
+<p>use /post to add new plants to the database. If a field is missing a 400 error will appear</p>
+<pre>{
+  "name": "Lavender",
+  "care_needs": "Full sun. Water sparingly.",
+  "instructions": "Let the soil dry between waterings.",
+  "author_id": 3,
+  "category_id": 2
+}</pre>
+
+
+<h2> USERS </h2>
+
+ <h3>GET /users</h3>
+<p>Returns all users that are using GrowLog.</p>
+
+<h3>GET /users/:id</h3>
+  <p>Returns one user. Returns 400 if the id is not a number and 404 if the user is not found.</p>
+
+ <h3>POST /users</h3>
+  <p>Creates a user. Returns 201 on success, 400 if username is missing and 409 if the username is taken.</p>
+  <pre>{
+  "username": "cactus_carla"
+}</pre>
+
+  <h2>Categories</h2>
+ 
+  <h3>GET /categories</h3>
+  <p>Returns all categories.</p>
+ 
+  <h3>GET /categories/:id</h3>
+  <p>Returns one category. Returns 400 if the id is not a number and 404 if the category is not found.</p>
+ 
+  <script>
+    document.getElementById("base-url").textContent = window.location.origin;
+  </script>
+</body>
+</html>
+
+
+
+
