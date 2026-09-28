@@ -156,7 +156,7 @@ app.post("/plants", async (req, res) => {
       `INSERT INTO plants (name, care_needs, instructions, author_id, category_id, image_url)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING *`,
-      [name, care_needs, instructions, author_id, category_id]
+      [name, care_needs, instructions, author_id, category_id, image_url || null]
     );
 
     res.status(201).json(result.rows[0]);
