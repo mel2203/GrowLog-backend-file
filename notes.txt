@@ -1,0 +1,23 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const { Pool } = require('pg');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+});
+
+pool.query('SELECT NOW()')
+  .then((result) => console.log('Connected to database:', result.rows[0]))
+  .catch((err) => console.error('Database connection error:', err.message));
+
+
+
+
+Create 3 TABLES in supabase
+- user, category, plants info
