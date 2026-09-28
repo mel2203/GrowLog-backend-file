@@ -18,8 +18,6 @@ pool.query('SELECT NOW()')
 
 
 
-
-
 Create 3 TABLES in supabase
 - user, category, plants info
 
@@ -29,3 +27,6 @@ POST /users with { "username": "lyana_vines22" } again	409, username taken
 POST /users with {}	400, username required
 POST /plants with author_id: 999	400, id doesn't exist
 POST /plants with the name field missing	400, all fields required
+
+
+Reset the database password in Supabase
